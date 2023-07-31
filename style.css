@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  width: 400px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: calc(100% - 22px); /* Ajustar el ancho del input teniendo en cuenta el borde y el padding */
+  padding: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #240cfd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #070342; 
+}
+
+button:active {
+  background-color: #030344; 
+}
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  flex: 0 0 calc(48% - 40px); /* Ajustar el ancho de la card teniendo en cuenta el margen */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.qrCodeContainer {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}

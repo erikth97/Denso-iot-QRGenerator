@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generador de códigos QR</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+</head>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generador de códigos QR</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+</head>
+<body>
+  <h1>Generador de Códigos QR</h1>
+  <form id="qrForm">
+    <div class="card-container">
+      <div class="card">
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1" name="input1" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2" name="input2" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input3">Input 3:</label>
+        <input type="text" id="input3" name="input3" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input4">Input 4:</label>
+        <input type="text" id="input4" name="input4" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input5">Input 5:</label>
+        <input type="text" id="input5" name="input5" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input6">Input 6:</label>
+        <input type="text" id="input6" name="input6" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input7">Input 7:</label>
+        <input type="text" id="input7" name="input7" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input8">Input 8:</label>
+        <input type="text" id="input8" name="input8" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input9">Input 9:</label>
+        <input type="text" id="input9" name="input9" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input10">Input 10:</label>
+        <input type="text" id="input10" name="input10" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input11">Input 11:</label>
+        <input type="text" id="input11" name="input11" class="qrInput" />
+      </div>
+      <div class="card">
+        <label for="input12">Input 12:</label>
+        <input type="text" id="input12" name="input12" class="qrInput" />
+      </div>
+
+    </div>
+    <button type="button" id="generateBtn">Generar Códigos QR</button>
+  </form>
+
+  <!-- Mostrar los códigos QR generados -->
+  <div id="qrCodes"></div>
+
+  <script>
+    $(document).ready(function() {
+      // Acción del botón para generar códigos QR
+      $("#generateBtn").click(function() {
+        generateQRCodes();
+      });
+
+      function generateQRCodes() {
+        // Obtener los valores de los inputs
+        var inputs = $(".qrInput");
+        var qrCodesDiv = $("#qrCodes");
+
+        // Limpiar div de códigos QR existentes
+        qrCodesDiv.empty();
+
+        // Validar que todos los campos tengan datos
+        var allFieldsFilled = true;
+        inputs.each(function() {
+          if ($(this).val().trim() === '') {
+            allFieldsFilled = false;
+            return false; // Detener el bucle si se encuentra un campo vacío
+          }
+        });
+
+        if (!allFieldsFilled) {
+          alert('Todos los campos deben estar llenos para generar los códigos QR.');
+          return;
+        }
+
+        // Generar códigos QR para cada input
+        inputs.each(function() {
+          var inputValue = $(this).val();
+          var labelDescription = $(this).prev("label").text(); // Obtener el texto de la etiqueta label anterior
+          var qrCodeDiv = $("<div class='qrCodeContainer'></div>"); // Use a container div for the QR code
+          qrCodeDiv.qrcode({
+            render: 'div',
+            minVersion: 1,
+            maxVersion: 40,
+            ecLevel: 'L',
+            size: 100,
+            fill: '#fff',
+            background: null,
+            text: inputValue,
+            radius: 0,
+            quiet: 0,
+            mode: 0,
+            mSize: 0.1,
+            mPosX: 0.5,
+            mPosY: 0.5,
+            label: 'no label',
+            fontname: 'sans',
+            fontcolor: '#000',
+            image: null
+          });
+          qrCodesDiv.append("<div class='card'><p class='description'>" + labelDescription + "</p>" + qrCodeDiv[0].outerHTML + "</div>");
+        });
+
+        // Agregar botón para generar PDF
+        var pdfButton = $("<button></button>");
+        pdfButton.text("Generar PDF");
+        pdfButton.click(function() {
+          generatePDF();
+        });
+        qrCodesDiv.append(pdfButton);
+      }
+
+      function generatePDF() {
+        // Crear un nuevo documento PDF
+        var doc = new jsPDF();
+
+        // Obtener el contenido de los códigos QR en un canvas
+        var qrCodeContainers = $(".qrCodeContainer");
+        var numCodes = qrCodeContainers.length;
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        var qrCodeWidth = 120;
+        var qrCodeHeight = 120;
+        var canvasWidth = 2 * qrCodeWidth + 20; // Width of canvas to hold two QR codes side by side
+
+        // Set canvas size
+        canvas.width = canvasWidth;
+        canvas.height = Math.ceil(numCodes / 2) * qrCodeHeight + 20;
+
+        var x = 10;
+        var y = 10;
+
+        // Draw each QR code on the canvas
+        qrCodeContainers.each(function(index) {
+          var qrCodeDiv = $(this)[0];
+          html2canvas(qrCodeDiv, {
+            canvas: canvas,
+            x: x,
+            y: y,
+            width: qrCodeWidth,
+            height: qrCodeHeight
+          });
+
+          // Move to the next position
+          if (index % 2 === 0 && index > 0) {
+            x = 10;
+            y += qrCodeHeight + 10;
+          } else {
+            x += qrCodeWidth + 10;
+          }
+        });
+
+        // Convert the canvas to image base64
+        var imgData = canvas.toDataURL("image/png");
+
+        // Add the image to the PDF document
+        doc.addImage(imgData, "PNG", 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight());
+
+        // Save the PDF document
+        doc.save('qrcodes.pdf');
+      }
+    });
+  </script>
+</body>
+</html>

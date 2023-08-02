@@ -1,11 +1,18 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
-  background-image: radial-gradient(circle, #f61919, #f93b34, #fa524b, #fa6661, #f87976, #f68583, #f39190, #f09c9c, #eea5a5, #ecaeae, #eab7b7, #e7c0c0);
+  margin: 80px;
+  background-image: radial-gradient(circle, #ffffff, #f4f4f4, #e9e9e9, #dfdfdf, #d4d4d4, #c6c6c6, #b8b8b8, #ababab, #989898, #858585, #727272, #606060);
 }
 
 h1 {
   text-align: center;
+  text-shadow:     .5px .5px .5px rgb(155, 151, 151),
+  0 0 .5em rgb(68, 68, 77),
+  0 0 0.1em rgb(50, 50, 51);
+color: white;
+font:
+  1em,
+  serif;
 }
 
 form {
@@ -33,9 +40,9 @@ input[type="text"] {
 button {
   display: block;
   width: 100%;
-  padding: 5px; /* Reducir el padding del botón */
+  padding: 8px; 
   font-size: 14px; /* Reducir el tamaño del texto del botón */
-  background-color: #1c0cfd;
+  background-image: radial-gradient(circle, #2a0fde, #2f28d7, #3737d0, #4043c7, #494dbe, #484dbf, #474cc0, #464cc1, #3a41cc, #2c34d7, #1d23e0, #0a00e9);
   color: #fff;
   border: none;
   border-radius: 5px;

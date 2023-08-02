@@ -73,14 +73,17 @@ button:active {
 }
 
 .qrCodeContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centrar los códigos QR horizontalmente */
+  width: 200px; /* Cambia este valor al ancho deseado */
   text-align: center; /* Centrar los códigos QR verticalmente */
-  margin-top: 10px;
-  padding: 10px; /* Eliminar el ancho del borde de la tarjeta */
-  background-color: white;
+  margin: 10px auto; /* Centrar horizontalmente y agregar un espacio en la parte superior e inferior */
+  padding: 10px; /* Añadir un relleno para separar el contenido del borde */
+  background-color: white; /* Cambiar el color de fondo para que se vea como una tarjeta */
+  border: 1px solid #ccc; /* Agregar un borde para darle un aspecto de tarjeta */
+  border-radius: 5px; /* Agregar bordes redondeados para suavizar la apariencia */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Agregar una sombra para resaltar la tarjeta */
 }
+
+
 
 .qrCodeImg {
   max-width: 150px; /* Limitar el tamaño máximo de los códigos QR */

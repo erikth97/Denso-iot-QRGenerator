@@ -1,70 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
- <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Generador de códigos QR</title>
-      <link rel="stylesheet" href="style.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-      <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
- </head>
- <body>
-    <h1>Generador de Códigos QR</h1>
-    <form id="qrForm">
-      <div class="card-container">
-        <div class="card">
-          <label for="input1">Lote 1:</label>
-          <input type="text" id="input1" name="input1" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input2">Lote 2:</label>
-          <input type="text" id="input2" name="input2" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input3">Lote 3:</label>
-          <input type="text" id="input3" name="input3" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input4">Lote 4:</label>
-          <input type="text" id="input4" name="input4" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input5">Lote 5:</label>
-          <input type="text" id="input5" name="input5" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input6">Lote 6:</label>
-          <input type="text" id="input6" name="input6" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input7">Lote 7:</label>
-          <input type="text" id="input7" name="input7" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input8">Lote 8:</label>
-          <input type="text" id="input8" name="input8" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input9">Lote 9:</label>
-          <input type="text" id="input9" name="input9" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input10">Lote 10:</label>
-          <input type="text" id="input10" name="input10" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input11">Lote 11:</label>
-          <input type="text" id="input11" name="input11" class="qrInput" />
-        </div>
-        <div class="card">
-          <label for="input12">Lote 12:</label>
-          <input type="text" id="input12" name="input12" class="qrInput" />
-        </div>
-      </div>
-      <button type="button" id="generateBtn">Generar Códigos QR</button>
-    </form>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Denso | Generador de QR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css">   
+  </head>
+  <body>
+    <div style="text-align:center;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Denso_logo.svg" alt="DENSO Logo" width="250" height="50">
+    </div>    
+    <div>
+      <label class="inputqr" for="qr-input">QR SYSTEM GENERATOR</label>
+      <input type="text" id="qr-input" placeholder="Introduce el numero de lote">
+    </div>
+    <div>  
+      <h2 id="title"></h2>
+      <canvas id="qr-canvas"></canvas>
+    </div>
+    <button id="download-btn"><i class="fas fa-download"></i>Guardar Codigo QR</button>
+    <button id="print-btn"><i class="fas fa-print"></i>Imprimir Codigo QR</button>
+    
+    <script src="srcipt.js"></script>
+  
+</body>  
+<footer class="footer">DNMX &#169  | Deveolped by IoT Staff 2023</footer>
+</html>
+
 
     <div id="qrCodes"></div>
     
